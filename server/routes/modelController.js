@@ -1,16 +1,16 @@
+import Sequelize from 'sequelize';
 import fs from 'fs';
 import path from 'path';
-import mongoose from 'mongoose';
 
 export const checkNgetAll = model => async (req, res, next) => {
-  // read file to get all pokemons data
-  const pokemons = await JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, '../data/pokemons.json'), 'UTF-8')
+  // read file to get all books data
+  const books = await JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, '../data/books.json'), 'UTF-8')
   );
 
-  if (!pokemons) {
+  if (!books) {
     return next({
-      log: 'ERROR: Error getting data from pokemons.json file',
+      log: 'ERROR: Error getting data from books.json file',
       message: {
         err: 'Error in readFile'
       }
@@ -18,7 +18,7 @@ export const checkNgetAll = model => async (req, res, next) => {
   }
 
   try {
-    await pokemons.forEach(elem => {
+    await books.forEach(elem => {
       const result = model.findOne({ id: elem.id });
       if (!result.id) {
         model.collection.insertOne(elem);
@@ -36,6 +36,17 @@ export const checkNgetAll = model => async (req, res, next) => {
     });
   } catch (err) {
     console.error(err);
+    res.status(400).end();
+  }
+};
+
+export const createOne = model => async (req, res) => {
+  const createdBy = req.user._id;
+  try {
+    const doc = await model.create({ ...req.body, createdBy });
+    res.status(201).json({ data: doc });
+  } catch (e) {
+    console.error(e);
     res.status(400).end();
   }
 };
@@ -104,5 +115,6 @@ export const modelController = model => ({
   checkNgetAll: checkNgetAll(model),
   getOneByName: getOneByName(model),
   getOneById: getOneById(model),
-  removeOne: removeOne(model)
+  removeOne: removeOne(model),
+  createOne: createOne(model)
 });

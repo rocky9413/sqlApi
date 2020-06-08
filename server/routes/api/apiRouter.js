@@ -1,20 +1,13 @@
 import { Router } from 'express';
-// import { getPokemons, getById, getByName } from './apiController';
 import controllers from './apiController';
-// import addFavRouter from '../favs.js';
-
-// const moreCharactersRouter = require('./characters.js');
 
 const router = Router();
 
-// OTHER STARTER DATA REQUEST ROUTE HANDLER
-// router.use('/favs', addFavRouter);
+// router.route('/allPoke').get(controllers.checkNgetAll);
 
-// router.use('/characters', moreCharactersRouter);
+// router.route('/name').get(controllers.getOneByName);
 
-router.route('/allPoke').get(controllers.checkNgetAll);
-
-router.route('/name').get(controllers.getOneByName);
+router.route('/books').get(controllers.checkNgetAll);
 
 router.route('/:id').get(controllers.getOneById);
 

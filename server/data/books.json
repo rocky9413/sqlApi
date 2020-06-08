@@ -1,0 +1,17 @@
+[
+  {
+    "ISBN": "0984782850",
+    "title": "Cracking the Coding Interview",
+    "count": "6"
+  },
+  {
+    "ISBN": "1491950358",
+    "title": "Building Microservices: Designing Fine-Grained Systems",
+    "count": "3"
+  },
+  {
+    "ISBN": "0134494164",
+    "title": "Clean Architecture: A Craftsman's Guide to Software Structure and Design",
+    "count": "5"
+  }
+]
