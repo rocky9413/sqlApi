@@ -1,0 +1,27 @@
+# General
+.DS_Store
+
+# dependencies
+node_modules/
+
+# logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# output from webpack/parcel
+dist/
+build/
+
+# zip file for initial aws deployment
+*.zip
+
+# test coverage
+coverage/
+
+# misc
+.cache/
+.env/
+.vscode/

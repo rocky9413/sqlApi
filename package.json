@@ -1,0 +1,66 @@
+{
+  "name": "library-api",
+  "version": "1.0.0",
+  "description": "library-api",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "start": "node ./dist/server.js",
+    "prod": "npm run clean && webpack && babel server --out-dir dist",
+    "dev-server": "nodemon --exec babel-node ./server/server.js",
+    "format": "prettier --write \"src/**/*.{js,jsx,html}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
+    "debug": "node --inspect --inspect-brk ./node_modules/webpack/bin/webpack.js --env.mode production",
+    "test": "jest",
+    "test-routes": "npm run test -t router",
+    "test-model": "npm run test -t model",
+    "test-controller": "npm run test -t controller"
+  },
+  "keywords": [
+    "express.js",
+    "SQL"
+  ],
+  "author": "RL",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.10.0",
+    "@babel/core": "^7.10.0",
+    "@babel/node": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.10.0",
+    "@babel/preset-env": "^7.10.0",
+    "@babel/preset-react": "^7.10.0",
+    "@testing-library/react": "^9.4.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.1.0",
+    "cors": "^2.8.5",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.21.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.18",
+    "pg": "^8.2.1",
+    "sequelize": "^5.21.12"
+  },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/",
+    "testEnvironment": "node"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 ChromeAndroid versions",
+    "last 2 Firefox versions",
+    "last 2 FirefoxAndroid versions",
+    "last 2 Safari versions",
+    "last 2 iOS versions",
+    "last 2 Edge versions"
+  ]
+}
