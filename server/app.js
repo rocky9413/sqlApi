@@ -1,8 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-// import path from 'path';
+// import cookieParser from 'cookie-parser';
 
-// import { dbMbConnect } from './dbMb';
 import { sequelize } from './dbSe';
 import apiRouter from './routes/api/apiRouter';
 
@@ -12,6 +11,7 @@ export const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// app.use(cookieParser());
 
 // serve the bundle.js as a static file
 // app.use(express.static(path.resolve(__dirname, '../dist')));
