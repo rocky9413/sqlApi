@@ -19,11 +19,15 @@ export const adminLogin = async (req, res, next) => {
 export const getUserId = async (req, res, next) => {
   const { username } = req.body;
   try {
-    const result = await Users.findAll({ where: { username } });
+    const result = await Users.findAll({
+      where: { username, role: 'regular' }
+    });
     if (result.length !== 0) {
       res.locals.name = username;
+      return next();
+    } else {
+      res.status(201).json({ account: 'Please try with correct login info!' });
     }
-    return next();
   } catch (e) {
     console.error(e);
     res.status(400).end();

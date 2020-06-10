@@ -6,8 +6,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "start": "node ./dist/server.js",
-    "prod": "npm run clean && webpack && babel server --out-dir dist",
-    "dev-server": "nodemon --exec babel-node ./server/server.js",
+    "prod": "npm run clean && babel server --out-dir dist",
+    "dev": "nodemon --exec babel-node ./server/server.js",
     "format": "prettier --write \"src/**/*.{js,jsx,html}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "debug": "node --inspect --inspect-brk ./node_modules/webpack/bin/webpack.js --env.mode production",
